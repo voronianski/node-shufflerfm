@@ -55,7 +55,7 @@ sfm.getGenre('uk+garage', function (err, data, response) {
 
 ## To Do
 
-Implement API resources that need OAuth - http://developers.shuffler.fm/#authorizations, e.g:
+Implement API resources that need OAuth - http://developers.shuffler.fm/#authorizations, e.g.:
 
 - [ ] Authorizations
 - [ ] Subscribtions
