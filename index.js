@@ -7,6 +7,7 @@ request.defaults({
 });
 
 var resources = {
+    'activity': '/activities/{id}',
     'artists': '/artists',
     'artist': '/artists/{id}',
     'channel': '/channels/{channel}',
@@ -73,6 +74,11 @@ Shuffler.prototype = {
 
             return callback(null, parsed, response);
         });
+    },
+
+    getActivityById: function (id, callback) {
+        var url = this._createUrl('activity', {id: id});
+        this._request('GET', url, callback);
     },
 
     getArtists: function (query, callback) {
