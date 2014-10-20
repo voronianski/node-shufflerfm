@@ -13,6 +13,7 @@ var resources = {
     'charts': '/charts/popular',
     'genres': '/genres',
     'genre': '/genres/{genre}',
+    'genre/sites': '/genres/{genre}/sites',
     'sites': '/sites',
     'site': '/sites/{id}',
     'tracks': '/tracks',
@@ -89,12 +90,22 @@ Shuffler.prototype = {
         this._request('GET', url, callback);
     },
 
-    getGenre: function (genre, callback) {
+    getGenres: function (genre, callback) {
+        var url = this._createUrl('genres', {genre: genre});
+        this._request('GET', url, callback);
+    },
+
+    getGenreByName: function (genre, callback) {
         var url = this._createUrl('genre', {genre: genre});
         this._request('GET', url, callback);
     },
 
-    getPopularCharts: function (callback) {
+    getGenreSites: function (genre, callback) {
+        var url = this._createUrl('genre/sites', {genre: genre});
+        this._request('GET', url, callback);
+    },
+
+    getChartsPopular: function (callback) {
         var url = this._createUrl('charts');
         this._request('GET', url, callback);
     },
