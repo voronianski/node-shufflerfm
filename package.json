@@ -1,5 +1,5 @@
 {
-  "name": "node-shufflerfm",
+  "name": "shufflerfm",
   "version": "0.0.1",
   "description": "Shuffler.fm API client for Node.js",
   "main": "index.js",

@@ -5,11 +5,25 @@
 ## Install
 
 ```javascript
-npm install node-shufflerfm
+npm install shufflerfm
 ```
 
 ## Usage
 
 http://developers.shuffler.fm/#resources
+
+## Example
+
+```javascript
+var ShufflerFM = require('shufflerfm');
+
+var sfm = new ShufflerFM('YOUR APP KEY');
+
+sfm.getGenre('uk+garage', function (err, json, response) {
+    if (err) throw err;
+
+    console.dir(json);
+});
+```
 
 ## License

@@ -13,6 +13,8 @@ var resources = {
     'charts': '/charts/popular',
     'genres': '/genres',
     'genre': '/genres/{genre}',
+    'sites': '/sites',
+    'site': '/sites/{id}',
     'tracks': '/tracks',
     'track': '/tracks/{id}'
 };
@@ -43,7 +45,7 @@ Shuffler.prototype = {
 
         var url = resources[alias];
         Object.keys(params).forEach(function (key) {
-            var param = params[key];
+            var param = key && params[key];
             if (!key) {
                 return;
             }
@@ -72,23 +74,18 @@ Shuffler.prototype = {
         });
     },
 
-    findArtists: function (query, callback) {
-        var url = this._createUrl('artists', {}, {q: query});
+    getArtists: function (query, callback) {
+        if (typeof query === 'function') {
+            callback = query;
+            query = false;
+        }
+
+        var url = this._createUrl('artists', {}, (query ? {q: query} : {}));
         this._request('GET', url, callback);
     },
 
     getArtistById: function (id, callback) {
         var url = this._createUrl('artist', {id: id});
-        this._request('GET', url, callback);
-    },
-
-    getTracks: function (callback) {
-        var url = this._createUrl('tracks');
-        this._request('GET', url, callback);
-    },
-
-    getTrackById: function (id, callback) {
-        var url = this._createUrl('track', {id: id});
         this._request('GET', url, callback);
     },
 
@@ -102,8 +99,44 @@ Shuffler.prototype = {
         this._request('GET', url, callback);
     },
 
-    getChannel: function (channel, callback) {
-        var url = this._createUrl('channel', {channel: channel});
+    getChannel: function (channel, position, callback) {
+        if (typeof position === 'function') {
+            callback = position;
+            position = false;
+        }
+
+        var qs = position ? {position: position} : {};
+        var url = this._createUrl('channel', {channel: channel}, qs);
+        this._request('GET', url, callback);
+    },
+
+    getTracks: function (callback) {
+        var url = this._createUrl('tracks');
+        this._request('GET', url, callback);
+    },
+
+    getTrackById: function (id, callback) {
+        var url = this._createUrl('track', {id: id});
+        this._request('GET', url, callback);
+    },
+
+    getSites: function (query, callback) {
+        if (typeof query === 'function') {
+            callback = query;
+            query = false;
+        }
+
+        var url = this._createUrl('sites', {}, (query ? {q: query} : {}));
+        this._request('GET', url, callback);
+    },
+
+    getSiteById: function (id, callback) {
+        var url = this._createUrl('site', {id: id});
+        this._request('GET', url, callback);
+    },
+
+    getFeaturedSites: function () {
+        var url = this._createUrl('sites', {}, {filter: 'featured'});
         this._request('GET', url, callback);
     }
 };
