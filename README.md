@@ -53,9 +53,9 @@ sfm.getGenre('uk+garage', function (err, data, response) {
 });
 ```
 
-## To-Do
+## To Do
 
-Implement resources that need authorization - http://developers.shuffler.fm/#authorizations:
+Implement API resources that need OAuth - http://developers.shuffler.fm/#authorizations, e.g:
 
 - [ ] Authorizations
 - [ ] Subscribtions
