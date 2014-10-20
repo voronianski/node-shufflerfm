@@ -94,7 +94,7 @@ Shuffler.prototype = {
         this._request('GET', url, callback);
     },
 
-    getCharts: function (callback) {
+    getPopularCharts: function (callback) {
         var url = this._createUrl('charts');
         this._request('GET', url, callback);
     },

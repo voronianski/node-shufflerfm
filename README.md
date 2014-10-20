@@ -10,14 +10,21 @@ npm install shufflerfm
 
 ## API
 
-### new ShufflerFM(APP_KEY)
+### `new ShufflerFM(APP_KEY)`
 
 Create an instance of a client. **`APP_KEY` string is mandatory - http://developers.shuffler.fm/#app_key**.
 
-Returns the bunch of self-descripting methods. Everything about Shuffler.fm API resources is available here - http://developers.shuffler.fm/#resources
+Returns a bunch of self-descripting methods. Details about every Shuffler.fm API resource is available here - http://developers.shuffler.fm/#resources
 
 ##### `getArtists([query], callback)`
 ##### `getArtistById(id, callback)`
+
+##### `getGenres(callback)`
+##### `getGenre(genre, callback)`
+
+##### `getPopularCharts(callback)`
+
+##### `getChannel(channel, [position], callback)`
 
 ## Example
 
