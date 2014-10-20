@@ -14,7 +14,9 @@ npm install shufflerfm
 
 Create an instance of a client. `'APP_KEY'` is mandatory - http://developers.shuffler.fm/#app_key.
 
-Returns a bunch of self-descripting methods. Details about every Shuffler.fm API resource is available here - http://developers.shuffler.fm/#resources.
+Returns a bunch of self-descripting methods. Every `callback` function has three arguments: `(error, parsedJSON, originalResponse)`. 
+
+Details about every Shuffler.fm API resource is available here - http://developers.shuffler.fm/#resources.
 
 ##### `getActivityById(id, callback)`
 
@@ -35,8 +37,6 @@ Returns a bunch of self-descripting methods. Details about every Shuffler.fm API
 
 ##### `getTracks(callback)`
 ##### `getTrackById(id, callback)`
-
-Every `callback` function has three arguments: `(error, parsedJSON, originalResponse)`.
 
 ## Example
 
