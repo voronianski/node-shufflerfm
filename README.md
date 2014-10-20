@@ -4,6 +4,12 @@
 
 ## Install
 
+```javascript
+npm install node-shufflerfm
+```
+
 ## Usage
+
+http://developers.shuffler.fm/#resources
 
 ## License
