@@ -1,0 +1,31 @@
+{
+  "name": "node-shufflerfm",
+  "version": "0.0.1",
+  "description": "Shuffler.fm API client for Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/voronianski/node-shufflerfm"
+  },
+  "keywords": [
+    "shuffler.fm",
+    "api",
+    "client",
+    "mp3",
+    "soundcloud",
+    "music",
+    "rest"
+  ],
+  "author": "Dmitri Voronianski <dmitri.voronianski@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/voronianski/node-shufflerfm/issues"
+  },
+  "homepage": "https://github.com/voronianski/node-shufflerfm",
+  "dependencies": {
+    "request": "^2.45.0"
+  }
+}
