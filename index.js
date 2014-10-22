@@ -51,7 +51,7 @@ Shuffler.prototype = {
         return this.authUrl;
     },
 
-    createAuthUrl: function (scope, redir_uri) {
+    createOAuthUrl: function (scope, redir_uri) {
         if (!scope || !scope.length) {
             throw new Error('Define scope for auth - http://developers.shuffler.fm/#authorizations');
         }
@@ -64,21 +64,7 @@ Shuffler.prototype = {
 
     getAuthToken: function (code, callback) {
         var url = this.getAuthorizationsBaseUrl() + '?app_key=' + this.getAppKey() + '&app_secret=' + this.getAppSecret();
-        return request({method: 'POST', url: url, body: {code: code}}, function (err, response, body) {
-            if (err) {
-                return callback(err);
-            }
-
-            var parsed;
-            try {
-                parsed = JSON.parse(body);
-            } catch (e) {
-                err = new Error('Parsing error: ' + e.message);
-                return callback(err);
-            }
-
-            return callback(null, parsed, response);
-        });
+        return request({method: 'POST', url: url, body: {code: code}}, this._parseResponse(callback));
     },
 
     _createUrl: function (alias, params, qs) {
@@ -102,7 +88,11 @@ Shuffler.prototype = {
     },
 
     _get: function (url, callback) {
-        return request({method: method, url: url}, function (err, response, body) {
+        return request({method: method, url: url}, this._parseResponse(callback));
+    },
+
+    _parseResponse: function (callback) {
+        return function (err, response, body) {
             if (err) {
                 return callback(err);
             }
@@ -116,7 +106,7 @@ Shuffler.prototype = {
             }
 
             return callback(null, parsed, response);
-        });
+        };
     },
 
     getActivityById: function (id, callback) {

@@ -16,22 +16,58 @@ Create an instance of a client. `'APP_KEY'` is mandatory - http://developers.shu
 
 Returns a bunch of self-descripting methods. Every `callback` function has three arguments: `(error, parsedJSON, originalResponse)`. Details about every Shuffler.fm API resource is available here - http://developers.shuffler.fm/#resources.
 
+#### Activities
+
+http://developers.shuffler.fm/#activities
+
 ##### `getActivityById(id, callback)`
+
+#### Artists
+
+http://developers.shuffler.fm/#artists
 
 ##### `getArtists([query], callback)`
 ##### `getArtistById(id, callback)`
 
+#### Authorizations
+
+http://developers.shuffler.fm/#authorizations
+
+##### `createOAuthUrl(scope, redirect_uri)`
+
+##### `getAuthToken(code)`
+
+#### Charts
+
+http://developers.shuffler.fm/#charts
+
 ##### `getChartsPopular(callback)`
 
+#### Channels
+
+http://developers.shuffler.fm/#channels
+
 ##### `getChannel(channel, [position], callback)`
+
+#### Genres
+
+http://developers.shuffler.fm/#genres
 
 ##### `getGenres(callback)`
 ##### `getGenreByName(genre, callback)`
 ##### `getGenreSites(genre, callback)`
 
+#### Sites
+
+http://developers.shuffler.fm/#sites
+
 ##### `getSites([query], callback)`
 ##### `getSiteById(id, callback)`
 ##### `getFeaturedSites(callback)`
+
+#### Tracks
+
+http://developers.shuffler.fm/#tracks
 
 ##### `getTracks(callback)`
 ##### `getTrackById(id, callback)`
