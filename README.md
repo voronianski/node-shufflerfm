@@ -8,11 +8,26 @@
 npm install shufflerfm
 ```
 
+## Example
+
+```javascript
+var ShufflerFM = require('shufflerfm');
+
+var sfm = new ShufflerFM('YOUR APP KEY', 'YOUR APP SECRET');
+
+sfm.getGenre('uk+garage', function (err, data, response) {
+    if (err) throw err;
+
+    // do something with data
+    console.dir(data);
+});
+```
+
 ## API
 
-### `new ShufflerFM('APP_KEY')`
+### `new ShufflerFM('APP_KEY', 'APP SECRET')`
 
-Create an instance of a client. `'APP_KEY'` is mandatory - http://developers.shuffler.fm/#app_key.
+Create an instance of a client. `'APP_KEY'` and `'APP SECRET'` are mandatory - http://developers.shuffler.fm/#app_key.
 
 Returns a bunch of self-descripting methods. Every `callback` function has three arguments: `(error, parsedJSON, originalResponse)`. Details about every Shuffler.fm API resource is available here - http://developers.shuffler.fm/#resources.
 
@@ -34,6 +49,22 @@ http://developers.shuffler.fm/#artists
 http://developers.shuffler.fm/#authorizations
 
 ##### `createOAuthUrl(scope, redirect_uri)`
+
+- `scope` - {String|Array} is required and should be at least one of the following: `users.r, users.favorites.r, users.favorites.m, users.subscriptions.r, users.subscriptions.m`
+- `redirect_uri` - {String} is required 
+
+Returns an uri string  (e.g. `https://shuffler.fm/authorizations/auth?app_key=YOUR-APP-KEY&scope=users.r&redir_uri=http%3A%2F%2Fmyurl.net`) that should be opened in browser.
+
+```javascript
+var ShufflerFM = require('shufflerfm');
+
+var sfm = new ShufflerFM('YOUR APP KEY', 'YOUR APP SECRET');
+var oauthUrl = sfm.createOAuthUrl(['users.r', 'users.favorites.r'], 'http://myurl.net');
+
+console.log(oauthUrl);
+// -> https://shuffler.fm/authorizations/auth?app_key=YOUR-APP-KEY&scope=users.r,users.favorites.r&redir_uri=http%3A%2F%2Fmyurl.net`
+// open in browser to follow three-legged OAuth 2.0 flow
+```
 
 ##### `getAuthToken(code)`
 
@@ -71,21 +102,6 @@ http://developers.shuffler.fm/#tracks
 
 ##### `getTracks(callback)`
 ##### `getTrackById(id, callback)`
-
-## Example
-
-```javascript
-var ShufflerFM = require('shufflerfm');
-
-var sfm = new ShufflerFM('YOUR APP KEY');
-
-sfm.getGenre('uk+garage', function (err, data, response) {
-    if (err) throw err;
-
-    // do something with data
-    console.dir(data);
-});
-```
 
 ## To Do
 
