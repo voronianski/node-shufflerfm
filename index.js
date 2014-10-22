@@ -65,7 +65,19 @@ Shuffler.prototype = {
     getAuthToken: function (code, callback) {
         var url = this.getAuthorizationsBaseUrl() + '?app_key=' + this.getAppKey() + '&app_secret=' + this.getAppSecret();
         return request({method: 'POST', url: url, body: {code: code}}, function (err, response, body) {
+            if (err) {
+                return callback(err);
+            }
 
+            var parsed;
+            try {
+                parsed = JSON.parse(body);
+            } catch (e) {
+                err = new Error('Parsing error: ' + e.message);
+                return callback(err);
+            }
+
+            return callback(null, parsed, response);
         });
     },
 
