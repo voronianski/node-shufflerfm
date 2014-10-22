@@ -32,6 +32,7 @@ function Shuffler (appKey, appSecret) {
     this.appSecret = appSecret;
     this.baseUrl = 'https://api.shuffler.fm/v2';
     this.authBaseUrl = 'https://shuffler.fm/authorizations';
+    this.accessToken = null;
 }
 
 Shuffler.prototype = {
@@ -49,6 +50,10 @@ Shuffler.prototype = {
 
     getAuthorizationsBaseUrl: function () {
         return this.authUrl;
+    },
+
+    getAccessToken: function () {
+        return this.accessToken;
     },
 
     createOAuthUrl: function (scope, redir_uri) {

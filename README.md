@@ -50,8 +50,8 @@ http://developers.shuffler.fm/#authorizations
 
 ##### `createOAuthUrl(scope, redirect_uri)`
 
-- `scope` - {String|Array} is required and should be at least one of the following: `users.r, users.favorites.r, users.favorites.m, users.subscriptions.r, users.subscriptions.m`
-- `redirect_uri` - {String} is required 
+- `scope` {String|Array} - required and should be at least one of the following: `users.r, users.favorites.r, users.favorites.m, users.subscriptions.r, users.subscriptions.m`
+- `redirect_uri` {String} - required and should be under the same domain as the one in your app's settings (http://shuffler.fm/developers/apps)
 
 Returns an uri string  (e.g. `https://shuffler.fm/authorizations/auth?app_key=YOUR-APP-KEY&scope=users.r&redir_uri=http%3A%2F%2Fmyurl.net`) that should be opened in browser.
 
@@ -63,10 +63,15 @@ var oauthUrl = sfm.createOAuthUrl(['users.r', 'users.favorites.r'], 'http://myur
 
 console.log(oauthUrl);
 // -> https://shuffler.fm/authorizations/auth?app_key=YOUR-APP-KEY&scope=users.r,users.favorites.r&redir_uri=http%3A%2F%2Fmyurl.net`
-// open in browser to follow three-legged OAuth 2.0 flow
+// open in browser to follow a three-legged OAuth 2.0 flow
+// this will return you `code` that you will need later
 ```
 
-##### `getAuthToken(code)`
+##### `getAuthToken(code, callback)`
+
+- `code` {String} - required, it's received as query param in redirect uri (after user follows the OAuth uri and grants access to your application)
+
+Returns object with `access_token` and `userId` as second argument in `callback` function.
 
 #### Charts
 
