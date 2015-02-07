@@ -1,6 +1,6 @@
 # <img src="https://d1v2xm8p2pd3wl.cloudfront.net/assets/static/images/shuffler_logo_200.png" width="45" align="left">&nbsp;node-shufflerfm
 
-> [Shuffler.fm](https://shuffler.fm) API client for Node.js
+> [Shuffler.fm](https://shuffler.fm) API client for Node.js and Browserify.
 
 ## Install
 
@@ -29,7 +29,7 @@ sfm.getGenre('uk+garage', function (err, data, response) {
 
 Create an instance of a client. `'APP_KEY'` and `'APP SECRET'` are mandatory - http://developers.shuffler.fm/#app_key.
 
-Returns a bunch of self-descripting methods. Every `callback` function has three arguments: `(error, parsedJSON, originalResponse)`. Details about every Shuffler.fm API resource is available here - http://developers.shuffler.fm/#resources.
+Returns a bunch of self-descripting methods. Details about every Shuffler.fm API resource is available here - http://developers.shuffler.fm/#resources.
 
 #### Activities
 
