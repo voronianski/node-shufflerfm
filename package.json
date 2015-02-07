@@ -1,6 +1,6 @@
 {
   "name": "shufflerfm",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Shuffler.fm API client for Node.js",
   "main": "index.js",
   "scripts": {
@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/voronianski/node-shufflerfm",
   "dependencies": {
-    "request": "^2.45.0"
+    "superagent": "^0.21.0"
   }
 }
