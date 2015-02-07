@@ -58,7 +58,7 @@ Shuffler.prototype = {
         if (!redir_uri || typeof redir_uri !== 'string') {
             throw new Error('Redirect uri is required - http://developers.shuffler.fm/#authorizations');
         }
-        scopes = typeof scopes === 'string' ? scopes : scopes.join(',');
+        scope = typeof scopes === 'string' ? scope : scope.join(',');
         return this.getAuthorizationsBaseUrl() + '?app_key=' + this.getAppKey() + '&scope=' + scope + '&redir_uri=' + redir_uri;
     },
 
@@ -95,7 +95,9 @@ Shuffler.prototype = {
     },
 
     _get: function (url, callback) {
-        return request.get(url).end(callback);
+        return request.get(url).end(function (err, res) {
+            callback(err, res.body, res);
+        });
     },
 
     getActivityById: function (id, callback) {
@@ -174,7 +176,7 @@ Shuffler.prototype = {
         this._get(url, callback);
     },
 
-    getFeaturedSites: function () {
+    getFeaturedSites: function (callback) {
         var url = this._createUrl('sites', {}, {filter: 'featured'});
         this._get(url, callback);
     }
