@@ -69,7 +69,9 @@ Shuffler.prototype = {
                 'app_secret': this.getAppSecret()
             })
             .send({code: code})
-            .end(callback);
+            .end(function (err, res) {
+                return callback(err, res.body, res);
+            });
     },
 
     _createUrl: function (alias, params, qs) {
