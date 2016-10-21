@@ -1,4 +1,4 @@
-# <img src="https://dl.dropboxusercontent.com/u/100463011/shuffler-logo.png" width="45" align="left">&nbsp;node-shufflerfm
+# <img src="https://dl.dropboxusercontent.com/u/100463011/shuffler-logo-2.png" width="45" align="left">&nbsp;node-shufflerfm
 
 > [Shuffler.fm](https://shuffler.fm) API client for Node.js and Browserify.
 
